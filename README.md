@@ -12,20 +12,21 @@ Ogni nodo è un processo separato, eseguito in un terminale distinto, che comuni
 
 ## Video dimostrativo
 
-📹 **[video/demo_bully.mp4](video/demo_bully.mp4)**: registrazione continua dello schermo, **senza tagli** (circa 1 min e 35 s, 1920×1080).
+📹 **[video/demo_bully.mp4](video/demo_bully.mp4)**: registrazione continua dello schermo con spiegazione a voce, **senza tagli** (14 min 20 s, 1920×1080).
 
-Il video mostra i 5 nodi, ognuno in una finestra di terminale separata con il titolo `Pi - Bully - porta 500i`. Il sesto riquadro ("Regia demo") descrive la fase in corso e mostra un orologio continuo, che prova l'assenza di tagli.
+Il video illustra prima l'approccio e il codice, poi esegue la demo dal vivo. I 5 nodi girano ognuno in una finestra di terminale separata, con il titolo `Pi - Bully - porta 500i`.
 
 | Momento | Cosa si vede |
 |---|---|
-| 0:00 – 0:28 | Apertura dei 5 terminali e avvio dei nodi (`python3 bully_node.py 1` … `5`) |
-| ~0:32 | **Fase 1**: in P1 si digita `e` + Invio e parte l'elezione |
-| ~0:32 – 0:34 | Messaggi ELECTION/ANSWER a cascata. P5: "Nessun nodo con ID superiore", poi "Mi dichiaro COORDINATORE". P1…P4 ricevono COORDINATOR da P5 |
-| ~0:45 | Comando `s` su P1…P4: tutti riportano `coordinatore = P5` |
-| ~1:02 | **Fase 2**: **Ctrl+C** nel terminale di P5 (`^C … *** processo terminato ***`) |
-| ~1:02 – 1:06 | I nodi non riescono a contattare P5 e scade il **timeout T** (P5 considerato guasto). Gli ELECTION verso P5 non vengono consegnati |
-| ~1:06 | **Fase 3**: P4 non riceve risposta da P5 entro T e si dichiara COORDINATORE. P1, P2, P3 ricevono COORDINATOR da P4 |
-| ~1:21 | Comando `s` su P1…P4: tutti riportano `coordinatore = P4, elezione in corso = no` |
+| 0:00 – 2:32 | Introduzione e approccio, sul README del repository (sezione «Come funziona»: messaggi, timeout, fasi) |
+| 2:32 – 9:27 | Spiegazione del codice di `bully_node.py` in VS Code, dall'inizio alla fine del file |
+| 9:27 – 10:08 | Apertura dei 5 terminali e avvio dei nodi P1…P5, uno per terminale |
+| ~10:25 | **Fase 1**: P1 avvia l'elezione (`e` + Invio). Messaggi ELECTION/ANSWER a cascata. P5: "Nessun nodo con ID superiore", poi "Mi dichiaro COORDINATORE". P1…P4 ricevono COORDINATOR da P5 |
+| ~11:13 – 11:22 | Comando `s` su P1…P4: tutti riportano `coordinatore = P5, elezione in corso = no` |
+| ~12:40 | **Fase 2**: **Ctrl+C** nel terminale di P5 (`^C … *** processo terminato ***`) |
+| ~12:41 – 12:43 | P1 non riesce a contattare P5 e dopo il **timeout T** lo considera guasto. Avvia una nuova elezione; gli ELECTION verso P5 risultano "NON consegnato" |
+| ~12:45 | **Fase 3**: P4 non riceve risposta da P5 entro T e si dichiara COORDINATORE. P1, P2, P3 ricevono COORDINATOR da P4 |
+| 12:45 – 14:20 | Commento dei log della seconda elezione e chiusura |
 
 ---
 
